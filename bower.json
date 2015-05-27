@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "arcticmodalbw": "~0.3.2"
+    "arcticmodalbw": "~0.3.2",
+    "jquery": "~2.1.4"
   }
 }
