@@ -2,32 +2,13 @@ module.exports = function(grunt) {
 
     // Задачи
     grunt.initConfig({
-        bower_concat: {
-            all: {
-                dest: 'build/_bower.js',
-                cssDest: 'build/_bower.css',
-                exclude: [
-                    'jquery',
-                    'modernizr'
-                ],
-                dependencies: {
-                    'underscore': 'jquery',
-                    'backbone': 'underscore',
-                    'jquery-mousewheel': 'jquery'
-                },
-                bowerOptions: {
-                    relative: false
-                }
-            }
-        },
-        
         concat: {
             main: {
                 src: [
                     'js/libs/jquery.js',
                     'js/mylibs/**/*.js'  // Все JS-файлы в папке
                 ],
-                dest: 'build/scripts.js'
+                dest: 'js/scripts.js'
             }
         },
         
@@ -38,15 +19,50 @@ module.exports = function(grunt) {
                     'build/scripts.min.js': '<%= concat.main.dest %>'
                 }
             }
+        },
+
+        sass: {
+            dist: {
+                options: {
+                    style: 'compressed'
+                },
+                files: {
+                    'css/style.css': 'sass/style.scss'
+                }
+            }
+        },
+
+        autoprefixer: {
+            options: {
+                browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'IE 9']
+            },
+            style: {
+                src: 'css/style.css'
+            },
+        },
+
+        watch: {
+            options: {
+              livereload: true,
+            },
+            css: {
+                files: ['sass/**/*.scss', 'sass/*.scss'],
+                tasks: ['sass', 'autoprefixer'],
+                options: {
+                  spawn: false,
+                   livereload: true,
+                },
+            }
         }
     });
 
     // Загрузка плагинов, установленных с помощью npm install
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-bower-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-autoprefixer');
 
     // Задача по умолчанию
-    grunt.registerTask('default', ['concat', 'uglify']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'autoprefixer']);
 };
