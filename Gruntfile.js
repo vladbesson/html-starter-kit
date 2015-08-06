@@ -21,6 +21,16 @@ module.exports = function(grunt) {
             }
         },
 
+        concat_css: {
+            options: {
+                // Task-specific options go here.
+            },
+            all: {
+                src: ["/**/*.css"],
+                dest: "styles.css"
+            },
+        },
+
         sass: {
             dist: {
                 options: {
@@ -52,6 +62,11 @@ module.exports = function(grunt) {
                   spawn: false,
                    livereload: true,
                 },
+            },
+            js: {
+                files: [],
+                tasks: [],
+                options: {},
             }
         }
     });
@@ -62,7 +77,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-concat-css');
 
     // Задача по умолчанию
-    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'autoprefixer']);
+    grunt.registerTask('default', ['concat', 'uglify', 'concat_css', 'sass', 'autoprefixer']);
 };
