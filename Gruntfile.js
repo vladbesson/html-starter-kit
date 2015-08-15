@@ -51,6 +51,19 @@ module.exports = function(grunt) {
             },
         },
 
+        'ftp-deploy': {
+            build: {
+                auth: {
+                  host: 'your_host',
+                  port: 21,
+                  authKey: 'key1'
+                },
+                src: ['path/to/your/folder'],
+                dest: 'folder on server',
+                exclusions: ['bower_components', 'node_modules', 'sass', '.git', '.sass-cache', 'bower.json', 'Gruntfile.js', 'README.md']
+            }
+        },
+
         watch: {
             options: {
               livereload: true,
@@ -77,8 +90,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-ftp-deploy');
     //grunt.loadNpmTasks('grunt-concat-css');
 
     // Задача по умолчанию
     grunt.registerTask('default', ['concat', 'uglify', 'sass', 'autoprefixer']);
+
+    grunt.registerTask('ftp', ['ftp-deploy']);
 };
