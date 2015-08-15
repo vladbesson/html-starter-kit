@@ -5,10 +5,9 @@ module.exports = function(grunt) {
         concat: {
             main: {
                 src: [
-                    'js/libs/jquery.js',
-                    'js/mylibs/**/*.js'  // Все JS-файлы в папке
+                    'js/*.js'// Все JS-файлы в папке
                 ],
-                dest: 'js/scripts.js'
+                dest: 'build/scripts.js' //Итоговый файл
             }
         },
         
@@ -16,20 +15,21 @@ module.exports = function(grunt) {
             main: {
                 files: {
                     // Результат задачи concat
-                    'build/scripts.min.js': '<%= concat.main.dest %>'
+                    'build/scripts.min.js': 'build/scripts.js'
                 }
             }
         },
 
-        concat_css: {
-            options: {
-                // Task-specific options go here.
-            },
-            all: {
-                src: ["/**/*.css"],
-                dest: "styles.css"
-            },
-        },
+        //Задача на случай необходимости конкотинировать css файлы
+        // concat_css: {
+        //     options: {
+        //         // Task-specific options go here.
+        //     },
+        //     all: {
+        //         src: ["/**/*.css"],
+        //         dest: "styles.css"
+        //     },
+        // },
 
         sass: {
             dist: {
@@ -64,8 +64,8 @@ module.exports = function(grunt) {
                 },
             },
             js: {
-                files: [],
-                tasks: [],
+                files: ['js/*.js'],
+                tasks: ['concat', 'uglify'],
                 options: {},
             }
         }
@@ -77,8 +77,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-concat-css');
+    //grunt.loadNpmTasks('grunt-concat-css');
 
     // Задача по умолчанию
-    grunt.registerTask('default', ['concat', 'uglify', 'concat_css', 'sass', 'autoprefixer']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'autoprefixer']);
 };
