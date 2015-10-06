@@ -20,17 +20,6 @@ module.exports = function(grunt) {
             }
         },
 
-        //Задача на случай необходимости конкотинировать css файлы
-        // concat_css: {
-        //     options: {
-        //         // Task-specific options go here.
-        //     },
-        //     all: {
-        //         src: ["/**/*.css"],
-        //         dest: "styles.css"
-        //     },
-        // },
-
         sass: {
             dist: {
                 options: {
