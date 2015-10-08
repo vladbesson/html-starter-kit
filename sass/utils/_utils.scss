@@ -1,15 +1,2 @@
-@mixin link($color, $color-text-hover, $border-color, $border-hover-color){
-  color: $color;
-  text-decoration: none;
-  border-bottom: 1px solid $border-color;
-  &:hover {
-    color: $color-text-hover;
-    border-bottom: 1px solid $border-hover-color;
-  }
-}
-
-@mixin input {
-  &:focus {
-    outline: none;
-  }
-}
+@import "my-mixins";
+@import "css3-mixins";
