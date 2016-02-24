@@ -1,6 +1,6 @@
 {
   "name": "html-starter-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/vladbesson/html-starter-kit",
   "authors": [
     "Vladislav Balabanovich <vladislav.svoi@gmail.com>"
@@ -14,7 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "arcticmodalbw": "~0.3.2",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "magnific-popup": "~1.1.0",
+    "slick-carousel": "~1.5.9"
   }
 }
