@@ -38,6 +38,14 @@ module.exports = function(grunt) {
             },
         },
 
+        sprite:{
+            all: {
+                src: 'img/sprite/*.png',
+                dest: 'img/spritesheet.png',
+                destCss: 'sass/base/_sprites.scss'
+            }
+        },
+
         watch: {
             options: {
               livereload: true,
@@ -63,6 +71,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-spritesmith');
 
     grunt.registerTask('default', ['concat', 'uglify', 'sass', 'autoprefixer']);
 };

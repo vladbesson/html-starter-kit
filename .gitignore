@@ -1,3 +1,9 @@
 bower_components/
 node_modules/
 .idea/workspace.xml
+.DS_Store
+.idea/copyright/
+.idea/workspace.xml
+.idea/misc.xml
+.idea
+.idea/
